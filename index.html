@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اردوگاه تفریحی و ورزشی خضراء</title>
+    
+    <!-- Google Fonts - Vazirmatn for clean Persian typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(4, 120, 87, 0.85), rgba(6, 78, 59, 0.92)), 
+                        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .tab-btn.active {
+            border-bottom: 3px solid #059669;
+            color: #059669;
+            font-weight: 700;
+        }
+
+        /* Glassmorphism Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Top Header / Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & Brand Name -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-600 flex items-center justify-center text-white shadow-lg shadow-emerald-600/30">
+                        <i class="fa-solid fa-tree text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-extrabold text-slate-800 tracking-tight">خضرای من</h1>
+                        <p class="text-xs text-emerald-600 font-medium">اردوگاه خضراء - سربندان</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links (Public) -->
+                <nav id="publicNav" class="hidden md:flex items-center gap-8 font-medium text-slate-600 text-sm">
+                    <a href="#status" class="hover:text-emerald-600 transition-colors">وضعیت امکانات</a>
+                    <a href="#calendar" class="hover:text-emerald-600 transition-colors">تقویم ظرفیت</a>
+                    <a href="#booking" class="hover:text-emerald-600 transition-colors">محاسبه هزینه و رزرو</a>
+                    <a href="#gallery" class="hover:text-emerald-600 transition-colors">گالری تصاویر</a>
+                    <a href="#contact" class="hover:text-emerald-600 transition-colors">تماس با ما</a>
+                </nav>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-3">
+                    <a href="#booking" class="hidden sm:inline-flex px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700 transition-all shadow-md shadow-emerald-600/20 items-center gap-2">
+                        <i class="fa-solid fa-calculator"></i>
+                        محاسبه هزینه و رزرو
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- PUBLIC WEBSITE VIEW -->
+        <div id="publicView" class="block transition-opacity duration-300">
+
+            <!-- Hero Section -->
+            <section class="hero-bg text-white py-24 lg:py-32 relative overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/30 backdrop-blur-md text-emerald-200 text-xs font-semibold mb-6 border border-emerald-400/30">
+                        ✨ مقصد برتر اردوهای دانش‌آموزی، سازمانی و خانوادگی
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+                        تجربه نشاط، طراوت و خاطرات ماندگار <br class="hidden sm:inline"/>
+                        در آغوش طبیعت پاک <span class="text-emerald-300">خضراء</span>
+                    </h1>
+                    <p class="text-base sm:text-lg text-emerald-100 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+                        اردوگاه تفریحی-ورزشی خضراء با بیش از ۵۰ هکتار فضای سبز، اقامتگاه‌های مدرن، سالن‌های همایش، زمین‌های چمن مصنوعی، پینت‌بال و دریاچه قایقرانی، آماده پذیرایی از گروه‌های مختلف می‌باشد.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="#booking" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-amber-500 text-slate-900 font-bold hover:bg-amber-400 transition-all shadow-lg shadow-amber-500/30 flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-calculator text-lg"></i>
+                            محاسبه هزینه اردو
+                        </a>
+                    </div>
+
+                    <!-- Highlights Stat Badges -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 max-w-4xl mx-auto">
+                        <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10">
+                            <div class="text-2xl sm:text-3xl font-extrabold text-amber-300">۵۰+ هکتار</div>
+                            <div class="text-xs text-emerald-100 mt-1">وسعت فضای سبز و جنگلی</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10">
+                            <div class="text-2xl sm:text-3xl font-extrabold text-amber-300">۱,۵۰۰ نفر</div>
+                            <div class="text-xs text-emerald-100 mt-1">ظرفیت پذیرش روزانه</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10">
+                            <div class="text-2xl sm:text-3xl font-extrabold text-amber-300">۲۴ سوئیت</div>
+                            <div class="text-xs text-emerald-100 mt-1">اقامتگاه VIP و عمومی</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10">
+                            <div class="text-2xl sm:text-3xl font-extrabold text-amber-300">۱۵+ بازی</div>
+                            <div class="text-xs text-emerald-100 mt-1">تفریحات هیجانی و ورزشی</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Live Facility & Inventory Status Section -->
+            <section id="status" class="py-20 bg-slate-100/70 border-y border-slate-200/60">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- Section Header -->
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-3">
+                                <span class="relative flex h-2 w-2">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                </span>
+                                وضعیت لحظه‌ای مجموعه
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-800">وضعیت آمادگی امکانات و تجهیزات اردوگاه</h3>
+                            <p class="text-slate-500 text-xs sm:text-sm mt-2">اطلاع از آخرین وضعیت عملیاتی بخش‌های مختلف و موجودی وسایل ورزشی</p>
+                        </div>
+                        <div class="bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm text-xs text-slate-600 flex items-center gap-2 self-start md:self-auto shrink-0">
+                            <i class="fa-solid fa-rotate text-emerald-600"></i>
+                            <span>آخرین بروزرسانی: <strong class="text-slate-800 font-bold">امروز - ساعت ۰۸:۳۰</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Status Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                        <!-- Item 1: Pool Status -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-person-swimming"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200/60 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                    فعال و دایر
+                                </span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-base mb-1">استخر روباز و مجموعه آبی</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-3">آب تصفیه شده و آماده استفاده</p>
+                            <div class="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">دمای آب:</span>
+                                    <span class="font-bold text-slate-700">۲۶ درجه سانتی‌گراد</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">سانس‌های فعال:</span>
+                                    <span class="font-bold text-slate-700">صبح و عصر</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: Soccer Field -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-futbol"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200/60 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                    آماده استفاده
+                                </span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-base mb-1">زمین چمن مصنوعی فوتبال</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-3">کف‌پوش استاندارد و خط‌کشی جدید</p>
+                            <div class="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">سیستم روشنایی:</span>
+                                    <span class="font-bold text-slate-700">پرژکتور کامل شبانه</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">وضعیت رزرو امروز:</span>
+                                    <span class="font-bold text-emerald-600">ساعت‌های خالی موجود</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: Sports Inventory / Balls -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-volleyball"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200/60 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                    موجودی کامل
+                                </span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-base mb-1">انبار توپ و تجهیزات ورزشی</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-3">تحویل رایگان به مسئولین گروه‌ها</p>
+                            <div class="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">توپ فوتبال / والیبال:</span>
+                                    <span class="font-bold text-slate-700">۱۸ عدد موجود</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">بسکتبال / بدمینتون:</span>
+                                    <span class="font-bold text-slate-700">۳۰ ست کامل</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">وسایل پینگ پنگ:</span>
+                                    <span class="font-bold text-slate-700">۲ ست کامل</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4: Paintball Arena -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-gun"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200/60 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                    فعال
+                                </span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-base mb-1">باشگاه پینت‌بال و مانع‌ها</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-3">میدان جنگلی آماده برگزاری رقابت</p>
+                            <div class="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">ست تفنگ و ماسک:</span>
+                                    <span class="font-bold text-slate-700">۴۰ ست کامل</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">موجودی گلوله:</span>
+                                    <span class="font-bold text-slate-700">تامین کامل (فول)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5: Zip-line & Adventure -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-person-hiking"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200/60 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                    فعال با مربی
+                                </span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-base mb-1">مسیر زیپ‌لاین و راپینگ</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-3">مسیر ۳۰۰ متری فوق‌العاده هیجانی</p>
+                            <div class="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">تست ایمنی کابل‌ها:</span>
+                                    <span class="font-bold text-emerald-600">تایید شده (امروز)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">تجهیزات هارنس:</span>
+                                    <span class="font-bold text-slate-700">۲۵ عدد استاندارد</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 6: Gazebos and Suites -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-campground"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold border border-blue-200/60 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-door-open text-[10px]"></i>
+                                    آماده پذیرش
+                                </span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-base mb-1">آلاچیق‌ها و سوئیت‌ها</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-3">محیط تمیز و مجهز به امکانات رفاهی</p>
+                            <div class="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">آلاچیق‌های چوبی آزاد:</span>
+                                    <span class="font-bold text-slate-700">۱۶ عدد</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">سوئیت‌های اقامتی خالی:</span>
+                                    <span class="font-bold text-slate-700">۷ سوئیت</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 7: Dining Hall -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-utensils"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200/60 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                    فعال و آماده سرو
+                                </span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-base mb-1">سلف‌سرویس و رستوران</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-3">سرو غذاهای گرم و تازه بهمن‌ماه</p>
+                            <div class="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">ظرفیت پذیرش همزمان:</span>
+                                    <span class="font-bold text-slate-700">۸۰۰ نفر</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">وضعیت بوفه و بوفه گرم:</span>
+                                    <span class="font-bold text-emerald-600">دایر</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 8: Amphitheater -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-icons"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200/60 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                    آماده برگزاری
+                                </span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-base mb-1">سالن همایش و آمفی‌تئاتر</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-3">مناسب جُنگ‌ها، مراسم و جلسات</p>
+                            <div class="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">سیستم صوتی و تصویر:</span>
+                                    <span class="font-bold text-slate-700">تست شده و آماده</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">ظرفیت صندلی‌ها:</span>
+                                    <span class="font-bold text-slate-700">۳۰۰ نفر</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Persian Calendar / Booking Availability Section -->
+            <section id="calendar" class="py-20 bg-white border-b border-slate-200/60">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- Section Header -->
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-3 border border-emerald-200">
+                            <i class="fa-regular fa-calendar-check text-emerald-600"></i>
+                            برنامه‌ریزی و ظرفیت پذیرش
+                        </span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-800">تقویم وضعیت ظرفیت رزرو اردوگاه</h2>
+                        <p class="text-slate-500 text-xs sm:text-sm mt-3 leading-relaxed">
+                            اطلاع از روزهای آزاد، نیمه‌تکمیل و تکمیل ظرفیت از ماه مهر تا اسفند.
+                        </p>
+                    </div>
+
+                    <!-- Calendar Controls & Legend Bar -->
+                    <div class="bg-slate-50 rounded-2xl p-4 sm:p-6 border border-slate-200/80 mb-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                        
+                        <!-- Month Navigation Tabs (Mehr onwards) -->
+                        <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 custom-scrollbar shrink-0" id="monthTabs">
+                            <button onclick="switchMonth('مهر')" id="tab-مهر" class="month-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20 transition-all shrink-0">مهر</button>
+                            <button onclick="switchMonth('آبان')" id="tab-آبان" class="month-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-600 hover:bg-slate-200/70 border border-slate-200 transition-all shrink-0">آبان</button>
+                            <button onclick="switchMonth('آذر')" id="tab-آذر" class="month-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-600 hover:bg-slate-200/70 border border-slate-200 transition-all shrink-0">آذر</button>
+                            <button onclick="switchMonth('دی')" id="tab-دی" class="month-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-600 hover:bg-slate-200/70 border border-slate-200 transition-all shrink-0">دی</button>
+                            <button onclick="switchMonth('بهمن')" id="tab-بهمن" class="month-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-600 hover:bg-slate-200/70 border border-slate-200 transition-all shrink-0">بهمن</button>
+                            <button onclick="switchMonth('اسفند')" id="tab-اسفند" class="month-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-600 hover:bg-slate-200/70 border border-slate-200 transition-all shrink-0">اسفند</button>
+                        </div>
+
+                        <!-- Availability Status Legend -->
+                        <div class="flex items-center flex-wrap justify-center gap-4 text-xs font-semibold text-slate-700 bg-white px-4 py-2.5 rounded-xl border border-slate-200">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50"></span>
+                                <span>ظرفیت آزاد (سبز)</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-full bg-amber-500 shadow-sm shadow-amber-500/50"></span>
+                                <span>نیمه‌تکمیل (زرد)</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 shadow-sm shadow-rose-500/50"></span>
+                                <span>تکمیل ظرفیت (قرمز)</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Selected Month Summary Stats -->
+                    <div class="grid grid-cols-3 gap-3 mb-6 max-w-xl mx-auto text-center">
+                        <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200/70">
+                            <span class="text-xs text-emerald-700 block font-medium">روزهای آزاد</span>
+                            <span id="countAvailable" class="text-lg font-black text-emerald-800">۱۴ روز</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-amber-50 border border-amber-200/70">
+                            <span class="text-xs text-amber-700 block font-medium">نیمه‌تکمیل</span>
+                            <span id="countSemi" class="text-lg font-black text-amber-800">۱۰ روز</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-rose-50 border border-rose-200/70">
+                            <span class="text-xs text-rose-700 block font-medium">تکمیل ظرفیت</span>
+                            <span id="countFull" class="text-lg font-black text-rose-800">۶ روز</span>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Grid Wrapper -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 overflow-hidden">
+                        
+                        <!-- Weekdays Header -->
+                        <div class="grid grid-cols-7 gap-1 sm:gap-3 text-center text-xs font-extrabold text-slate-500 pb-3 mb-3 border-b border-slate-100">
+                            <div>شنبه</div>
+                            <div>۱شنبه</div>
+                            <div>۲شنبه</div>
+                            <div>۳شنبه</div>
+                            <div>۴شنبه</div>
+                            <div class="text-emerald-700">۵شنبه</div>
+                            <div class="text-rose-600">جمعه</div>
+                        </div>
+
+                        <!-- Days Days Container -->
+                        <div id="calendarGrid" class="grid grid-cols-7 gap-1.5 sm:gap-3">
+                            <!-- Dynamically generated Persian calendar days -->
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Interactive Cost Calculator & External Form Section -->
+            <section id="booking" class="py-20 bg-white">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                        <!-- Decorative background elements -->
+                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
+                        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-amber-500/20 rounded-full blur-3xl"></div>
+
+                        <div class="relative z-10">
+                            <div class="text-center mb-8">
+                                <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest">محاسبه آنلاین</span>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold mt-1">محاسبه‌گر هزینه رزرو اختصاصی</h3>
+                                <p class="text-slate-400 text-xs sm:text-sm mt-2">تعداد نفرات و مدت زمان اقامت را انتخاب کنید تا هزینه به صورت زنده محاسبه شود.</p>
+                            </div>
+
+                            <div class="space-y-6 max-w-2xl mx-auto">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <!-- Input Field 1: People Count with +/- controls -->
+                                    <div>
+                                        <label for="calcPeople" class="block text-xs font-semibold text-slate-300 mb-2">تعداد نفرات</label>
+                                        <div class="flex items-center gap-2">
+                                            <button type="button" onclick="changePeople(1)" class="w-11 h-11 flex items-center justify-center rounded-xl bg-slate-800 border border-slate-700 text-emerald-400 hover:bg-slate-700 hover:text-emerald-300 transition-colors text-lg font-bold select-none active:scale-95 shrink-0" title="افزایش">
+                                                <i class="fa-solid fa-plus text-sm"></i>
+                                            </button>
+                                            <div class="relative flex-grow">
+                                                <input type="number" id="calcPeople" min="1" value="1" oninput="calculateCost()" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm font-bold text-center focus:outline-none focus:border-emerald-500 pl-10">
+                                                <div class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs">نفر</div>
+                                            </div>
+                                            <button type="button" onclick="changePeople(-1)" class="w-11 h-11 flex items-center justify-center rounded-xl bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors text-lg font-bold select-none active:scale-95 shrink-0" title="کاهش">
+                                                <i class="fa-solid fa-minus text-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Input Field 2: Duration / Nights -->
+                                    <div>
+                                        <label for="calcNights" class="block text-xs font-semibold text-slate-300 mb-2">مدت زمان حضور / اقامت</label>
+                                        <select id="calcNights" onchange="calculateCost()" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500">
+                                            <option value="0">بدون اقامت شبانه (یک‌روزه)</option>
+                                            <option value="1">۱ شب اقامت</option>
+                                            <option value="2">۲ شب اقامت</option>
+                                            <option value="3">۳ شب اقامت</option>
+                                            <option value="4">۴ شب اقامت</option>
+                                            <option value="5">۵ شب اقامت</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Cost Calculation Breakdown Display -->
+                                <div class="p-6 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                    <div>
+                                        <span class="text-xs text-slate-400 block mb-1">هزینه کل برآورد شده:</span>
+                                        <span id="calculatedTotalText" class="text-2xl sm:text-3xl font-black text-amber-400">۹,۰۰۰,۰۰۰ تومان</span>
+                                        <span id="calculatedPerPersonText" class="text-xs text-emerald-400 block mt-1">۳۰۰,۰۰۰ تومان به ازای هر نفر</span>
+                                    </div>
+                                    <div class="text-xs text-slate-400 sm:text-left text-right space-y-1">
+                                        <div class="flex items-center gap-1.5 justify-end">
+                                            <i class="fa-solid fa-sun text-amber-400"></i>
+                                            <span>تعرفه یک‌روزه: ۳۰۰,۰۰۰ تومان/نفر</span>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 justify-end">
+                                            <i class="fa-solid fa-moon text-indigo-400"></i>
+                                            <span>تعرفه شبانه: ۶۰۰,۰۰۰ تومان (هر شب/نفر)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- External Booking Form Call To Action -->
+                                <div class="pt-4 text-center space-y-3">
+                                    <a href="https://example.com/khazra-booking-form" target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all shadow-lg shadow-emerald-600/30 items-center justify-center gap-3 text-sm sm:text-base">
+                                        <span>ورود به فرم ثبت درخواست رزرو</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    </a>
+                                    <p class="text-xs text-slate-400">
+                                        جهت قطعی کردن و تکمیل درخواست رزرو اردو، لطفاً روی دکمه بالا کلیک کنید.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section id="gallery" class="py-20 bg-slate-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-16">
+                        <h2 class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-2">تصاویر و فضاهای اردوگاه</h2>
+                        <h3 class="text-3xl font-extrabold text-slate-800">جلوه‌هایی از طبیعت خضراء</h3>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="relative group overflow-hidden rounded-2xl h-64 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80" alt="کمپینگ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 text-white text-xs font-bold">
+                                آلاچیق‌ها و محوطه سرسبز
+                            </div>
+                        </div>
+                        <div class="relative group overflow-hidden rounded-2xl h-64 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=600&q=80" alt="ورزشی" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 text-white text-xs font-bold">
+                                زمین بازی و مسابقات
+                            </div>
+                        </div>
+                        <div class="relative group overflow-hidden rounded-2xl h-64 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80" alt="یوگا و آرامش" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 text-white text-xs font-bold">
+                                محوطه یوگا و پیاده‌روی
+                            </div>
+                        </div>
+                        <div class="relative group overflow-hidden rounded-2xl h-64 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1476514525535-ce74f45814d0?auto=format&fit=crop&w=600&q=80" alt="دریاچه" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 text-white text-xs font-bold">
+                                دریاچه قایقرانی خضراء
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer Section -->
+            <footer id="contact" class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
+                                    <i class="fa-solid fa-tree"></i>
+                                </div>
+                                <span class="text-lg font-bold text-white">اردوگاه تفریحی خضراء</span>
+                            </div>
+                            <p class="text-xs leading-relaxed">
+                                بزرگترین مرکز اردویی و تفریحی با فضایی پرنشاط و امکانات پیشرفته استاندارد برای دانش‌آموزان، شرکت‌ها و خانواده‌ها.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm mb-4">ارتباط با ما</h4>
+                            <ul class="space-y-2 text-xs">
+                                <li><i class="fa-solid fa-location-dot text-emerald-500 ml-2"></i> کیلومتر ۱۵ جاده ساحلی، ورودی منطقه خضراء</li>
+                                <li><i class="fa-solid fa-phone text-emerald-500 ml-2"></i> ۰۲۱-۸۸۹۹۰۰۱۱ | ۰۲۱-۸۸۹۹۰۰۲۲</li>
+                                <li><i class="fa-solid fa-envelope text-emerald-500 ml-2"></i> info@khazracamp.ir</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm mb-4">ساعات کاری دفتر پذیرش</h4>
+                            <p class="text-xs leading-relaxed mb-2">شنبه تا پنجشنبه: ۰۷:۳۰ الی ۱۹:۰۰</p>
+                            <p class="text-xs leading-relaxed">جمعه‌ها و ایام تعطیل: ۰۸:۰۰ الی ۱۶:۰۰</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-800 pt-6 text-center text-xs">
+                        © ۱۴۰۵ اردوگاه تفریحی خضراء. تمامی حقوق محفوظ است.
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </main>
+
+    <!-- Notification Toast Element -->
+    <div id="toastNotification" class="fixed bottom-5 left-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-800 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700 text-xs font-medium">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+        <span id="toastMessage">پیام سیستم</span>
+    </div>
+
+    <script>
+        window.onload = function() {
+            calculateCost();
+            renderCalendar('مهر');
+        };
+
+        let currentMonth = 'مهر';
+        const persianMonthsData = {
+            'مهر': { days: 30, startDay: 4 }, // 4 = Wednesday (چهارشنبه)
+            'آبان': { days: 30, startDay: 6 }, // 6 = Friday (جمعه)
+            'آذر': { days: 30, startDay: 1 }, // 1 = Sunday (یکشنبه)
+            'دی': { days: 30, startDay: 3 }, // 3 = Tuesday (سه‌شنبه)
+            'بهمن': { days: 30, startDay: 5 }, // 5 = Thursday (پنج‌شنبه)
+            'اسفند': { days: 29, startDay: 0 }  // 0 = Saturday (شنبه)
+        };
+
+        function switchMonth(monthName) {
+            currentMonth = monthName;
+            
+            // Update Tab active styling
+            document.querySelectorAll('.month-tab').forEach(btn => {
+                btn.className = 'month-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-600 hover:bg-slate-200/70 border border-slate-200 transition-all shrink-0';
+            });
+            const activeBtn = document.getElementById('tab-' + monthName);
+            if(activeBtn) {
+                activeBtn.className = 'month-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20 transition-all shrink-0';
+            }
+
+            renderCalendar(monthName);
+        }
+
+        function getDayStatus(monthName, dayNum, weekdayIndex) {
+            // Seed calculation to get realistic persistent status distribution
+            const seed = (monthName.charCodeAt(0) * 11 + dayNum * 17) % 100;
+            const isWeekend = (weekdayIndex === 5 || weekdayIndex === 6); // Thu or Fri
+
+            if (isWeekend) {
+                if (seed > 50) return { type: 'full', label: 'تکمیل', cap: '۰ نفر', bg: 'bg-slate-100/70 hover:bg-rose-50 border-slate-200 text-slate-400 opacity-75', badge: 'bg-rose-400', labelClass: 'text-slate-400' };
+                if (seed > 20) return { type: 'semi', label: 'نیمه‌تکمیل', cap: '۴۰ نفر', bg: 'bg-amber-50 hover:bg-amber-100 border-amber-300 text-amber-900', badge: 'bg-amber-500', labelClass: 'text-amber-700' };
+                return { type: 'available', label: 'آزاد', cap: '۱۸۰ نفر', bg: 'bg-emerald-600 hover:bg-emerald-500 border-emerald-700 text-white shadow-md shadow-emerald-600/30 ring-2 ring-emerald-500/40', badge: 'bg-emerald-200 animate-pulse', labelClass: 'text-emerald-100 font-black' };
+            } else {
+                if (seed > 80) return { type: 'full', label: 'تکمیل', cap: '۰ نفر', bg: 'bg-slate-100/70 hover:bg-rose-50 border-slate-200 text-slate-400 opacity-75', badge: 'bg-rose-400', labelClass: 'text-slate-400' };
+                if (seed > 50) return { type: 'semi', label: 'نیمه‌تکمیل', cap: '۱۲۰ نفر', bg: 'bg-amber-50 hover:bg-amber-100 border-amber-300 text-amber-900', badge: 'bg-amber-500', labelClass: 'text-amber-700' };
+                return { type: 'available', label: 'آزاد', cap: '۳۵۰ نفر', bg: 'bg-emerald-600 hover:bg-emerald-500 border-emerald-700 text-white shadow-md shadow-emerald-600/30 ring-2 ring-emerald-500/40', badge: 'bg-emerald-200 animate-pulse', labelClass: 'text-emerald-100 font-black' };
+            }
+        }
+
+        function renderCalendar(monthName) {
+            const grid = document.getElementById('calendarGrid');
+            const data = persianMonthsData[monthName];
+            if (!grid || !data) return;
+
+            grid.innerHTML = '';
+
+            let countAvailable = 0;
+            let countSemi = 0;
+            let countFull = 0;
+
+            // Empty padding slots before month start
+            for (let i = 0; i < data.startDay; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'min-h-[64px] rounded-xl bg-slate-50/50 border border-dashed border-slate-100';
+                grid.appendChild(emptyCell);
+            }
+
+            // Days of the month
+            for (let day = 1; day <= data.days; day++) {
+                const weekdayIndex = (data.startDay + day - 1) % 7;
+                const status = getDayStatus(monthName, day, weekdayIndex);
+
+                if (status.type === 'available') countAvailable++;
+                else if (status.type === 'semi') countSemi++;
+                else if (status.type === 'full') countFull++;
+
+                const dayCell = document.createElement('div');
+                dayCell.className = `min-h-[64px] p-2 sm:p-2.5 rounded-xl border ${status.bg} transition-all flex flex-col justify-between select-none`;
+
+                dayCell.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs sm:text-sm font-black">${day.toLocaleString('fa-IR')}</span>
+                        <span class="w-2.5 h-2.5 rounded-full ${status.badge}"></span>
+                    </div>
+                    <div class="text-[10px] font-bold ${status.labelClass} truncate mt-1">
+                        ${status.label}
+                    </div>
+                `;
+
+                grid.appendChild(dayCell);
+            }
+
+            // Update stats counter display
+            document.getElementById('countAvailable').textContent = countAvailable.toLocaleString('fa-IR') + ' روز';
+            document.getElementById('countSemi').textContent = countSemi.toLocaleString('fa-IR') + ' روز';
+            document.getElementById('countFull').textContent = countFull.toLocaleString('fa-IR') + ' روز';
+        }
+
+        // Increment / Decrement People Count Helper
+        function changePeople(delta) {
+            const peopleInput = document.getElementById('calcPeople');
+            let currentVal = parseInt(peopleInput.value) || 1;
+            currentVal += delta;
+            if (currentVal < 1) currentVal = 1;
+            peopleInput.value = currentVal;
+            calculateCost();
+        }
+
+        // Real-time Cost Calculator Function
+        function calculateCost() {
+            const peopleInput = document.getElementById('calcPeople');
+            let people = parseInt(peopleInput.value) || 0;
+            if (people < 1) people = 1;
+
+            const nights = parseInt(document.getElementById('calcNights').value) || 0;
+
+            let perPersonCost = 0;
+            let totalCost = 0;
+
+            if (nights === 0) {
+                // No night stay: 300,000 IRR per person
+                perPersonCost = 300000;
+                totalCost = people * 300000;
+            } else {
+                // Each night stay: 600,000 IRR per person per night
+                perPersonCost = nights * 600000;
+                totalCost = people * nights * 600000;
+            }
+
+            document.getElementById('calculatedTotalText').textContent = totalCost.toLocaleString('fa-IR') + ' تومان';
+            document.getElementById('calculatedPerPersonText').textContent = perPersonCost.toLocaleString('fa-IR') + ' تومان به ازای هر نفر';
+        }
+
+        // Toast Alert System
+        function showToast(msg, type = 'success') {
+            const toast = document.getElementById('toastNotification');
+            const toastMsg = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMsg.textContent = msg;
+
+            if(type === 'success') {
+                toastIcon.className = 'fa-solid fa-circle-check text-emerald-400 text-base';
+            } else {
+                toastIcon.className = 'fa-solid fa-circle-info text-blue-400 text-base';
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
